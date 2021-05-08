@@ -1,11 +1,12 @@
 import React from "react";
 import { Table } from "react-bootstrap";
 import ModalApp from "./FormModalComponent";
+import "./table.css";
 
 function TableComponent(props) {
   return (
     <>
-      <Table responsive striped bordered hover variant="dark">
+      <Table responsive striped bordered hover variant="dark" className="table">
         <thead>
           <tr>
             <th>#</th>

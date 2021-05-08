@@ -11,17 +11,6 @@ function FromApp(props) {
     formState: { errors },
   } = useForm();
 
-  //   async function fetchData() {
-  //     // You can await here
-  //     const result = await NewComp.getData();
-
-  //     console.log("Hey its me", result);
-  //     console.log("not me", result.data);
-  //     setData(result.data);
-
-  //     // ...
-  //   }
-
   const onSubmit = (data) => {
     let date = data.dateOfBirth.split("-");
     let newDate = `${date[2]}-${date[1]}-${date[0]}`;
@@ -42,8 +31,6 @@ function FromApp(props) {
     data.modifiedDate = newDate;
     data.createdBy = `System`;
     data.modifiedBy = `System`;
-    console.log(data);
-    console.log(date, "Hei  new date", newDate);
 
     async function save() {
       const temp = await NewComp.updateData(data);
@@ -51,8 +38,6 @@ function FromApp(props) {
     }
     save();
   };
-
-  console.log(watch("firstName")); // watch input value by passing the name of it
 
   return (
     <Form validated onSubmit={handleSubmit(onSubmit)}>

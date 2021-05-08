@@ -26,9 +26,6 @@ function FetchDataComponent() {
   async function fetchData() {
     // You can await here
     const result = await NewComp.getData();
-
-    console.log("Hey its me", result);
-    console.log("not me", result.data);
     setData(result.data);
 
     // ...
@@ -47,7 +44,6 @@ function FetchDataComponent() {
     fetchData();
   }
   function handleCheckboxChange(e, arr) {
-    console.log("event targe=", e.target.checked);
     if (e.target.checked) {
       let temp = checkData;
       temp.push(arr);
@@ -55,10 +51,6 @@ function FetchDataComponent() {
     } else {
       removeByAttr(checkData, "rollNumber", arr.rollNumber);
     }
-
-    console.log("Hey it's data", checkData);
-    // console.log("Hey its me the simple object=", arr);
-    // console.log("its change checkbox =", e);
   }
 
   const details = data.map((arr) => (
@@ -82,22 +74,12 @@ function FetchDataComponent() {
       <td>{arr.createdDate}</td>
       <td>{arr.modifiedDate}</td>
       <td>
-        {/* <Button variant="warning">Modify</Button>{" "} */}
-        {/* <ModalApp /> */}
         <ModifyComponent fetchdata={fetchData} data={arr} />
         <DeleteModalComponent
           deletedata={handleDeleteClick}
           rollnumber={arr.rollNumber}
           val={true}
         />
-        {/* <Button
-          variant="danger"
-          onClick={() => {
-            handleDeleteClick(arr.rollNumber);
-          }}
-        >
-          Delete
-        </Button>{" "} */}
       </td>
     </tr>
   ));
@@ -108,9 +90,6 @@ function FetchDataComponent() {
         deletedata={handleMultipleDeleteClick}
         val={false}
       />
-      {/* <Button variant="danger" onClick={handleMultipleDeleteClick}>
-        Delete
-      </Button>{" "} */}
     </>
   );
 }
